@@ -20,17 +20,20 @@ export class Feedback extends React.Component {
     bad: 0,
   };
 
-  leaveFeedback = e => {
-    switch (e.target.innerHTML) {
-      case 'good':
-        return this.setState(prevState => ({ good: prevState.good + 1 }));
-      case 'neutral':
-        return this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-      case 'bad':
-        return this.setState(prevState => ({ bad: prevState.bad + 1 }));
-      default:
-        return this.state;
-    }
+  leaveFeedback = option => {
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
+    // switch (e.target.innerHTML) {
+    //   case 'good':
+    //     return this.setState(prevState => ({ good: prevState.good + 1 }));
+    //   case 'neutral':
+    //     return this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
+    //   case 'bad':
+    //     return this.setState(prevState => ({ bad: prevState.bad + 1 }));
+    //   default:
+    //     return this.state;
+    // }
   };
   countTotalFeedback = () => {
     return this.state.good + this.state.bad + this.state.neutral;
